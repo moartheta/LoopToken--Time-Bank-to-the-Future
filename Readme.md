@@ -48,3 +48,35 @@ Finalizing the idea, and working through the nuances and edge cases took a signi
 Limited JavaScript and HTML knowledge added even more complexity when attempting to integrate and deploy with a front end.
 
 Creating the token itself was not overly difficult due to the existing libraries, inherited objects, and templated code.
+
+### Requirements For Production Deployment
+
+If we were to deploy this system in a full production environment, it would require a significant effort and skill set.
+There are many technologies involved, and interaction between them is key.  Below is a high-level description of what would be required.
+
+![TechFootprint](Images/TechFootprint.png)
+
+The general flow would be as follows:
+*  User requests work via the Smart Contract.  This would include:
+    * Wallet address
+    * Estimated effort in hours
+    * Category of work
+    * Sub-category of work
+    * Description of work
+    * Optional SOW/Formal Request
+* This would result in:
+    * A POST call via JavaScript to the back (Python)
+    * JSON parsing
+    * Database query to obtain matching set by category and sub-category.
+    * Dataset is then converted to JSON format and sent back to Javascript
+    * Javascript updates the HTML with the processed data.
+* The provider would then either be assigned, or selected by the requestor.
+* Work would be initiated via the SmartContract on the Blockchain.
+* If any issues occur, the work could be changed to paused or pending status.
+* Upon completion, the final work has a sign-off, and tokens are transferred from requestor to provider.
+
+Additional capabilities could include:
+* Having a "leaderboard" of those performing the most work.
+* Add a rating feature, so only those with minimal ratings would be selected.
+* Have "bonus" periods, where during certain time frames you can earn additional tokens.
+
