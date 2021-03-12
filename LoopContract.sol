@@ -26,30 +26,35 @@ contract TimeBank is ERC20, ERC20Detailed {
         _mint(owner, initial_supply);
     }
     
+    // Call the internal `_mint` function and pass the `recipient` and `amount` variables.
     function mint(address _recipient, uint _amount) public onlyOwner {
         _mint(_recipient, _amount);
     }
     
+    // Initializes the requestors contract for work with a specified hour (LOOP) amount.
     function request(uint _amount) public payable {
-        requestor = msg.sender;
-        amount = _amount;
+        requestor = msg.sender; // Setting requestor contract address.
+        amount = _amount; // Setting the amount to number of hours (LOOP) requested.
     }
     
+    // Provider accepts request for work function from above.
     function initiate() public {
-        require(msg.sender != requestor, "Not Authorized to Initiate.  Can't do your own work!" );
-        provider = msg.sender;
-        status = Initiated;
+        require(msg.sender != requestor, "Not Authorized to Initiate.  Can't do your own work!" ); // Checks to make sure the requestor and requestee are not the same person.
+        provider = msg.sender; // Setting provider contract address.
+        status = Initiated; // Setting status to initiated.
     }
     
+    // Provider marks complete when the work is done.
     function complete() public {
-        require(msg.sender == provider, "Not Authorized to Mark as Complete!");
-        status = Completed;
+        require(msg.sender == provider, "Not Authorized to Mark as Complete!"); // Requires that person marking complete is the one who Initiated the contract .
+        status = Completed; // Setting status to completed.
     }
     
+    // Requestor signs off and verifies that work has been completed to release funds to the provider.
     function signOff() public payable {  
-        require(status == Completed, "Sorry, Not Completed Yet!");
-        require(msg.sender == requestor, "Not Authoritzed to Sign Off on this Contract");
-        transferFrom(requestor, provider, amount);
+        require(status == Completed, "Sorry, Not Completed Yet!"); // Checks that the status of the work is completed.
+        require(msg.sender == requestor, "Not Authoritzed to Sign Off on this Contract"); // Checks to make sure the requestor and not the provider signs off.
+        transferFrom(requestor, provider, amount); // Transfers funds from requestor to provider.
     }
 
 
