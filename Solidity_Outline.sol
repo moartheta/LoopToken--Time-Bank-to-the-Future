@@ -1,3 +1,5 @@
+// This was the original skeleton/framework for the contract we ended up making.  Was used to create LoopContract.sol
+
 pragma solidity ^0.5.0;
 
 import "github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/math/SafeMath.sol"; // only works in Remix
