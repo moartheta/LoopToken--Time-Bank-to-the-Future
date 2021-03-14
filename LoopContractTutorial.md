@@ -50,7 +50,7 @@ Before we can sign off, we need to use the built in ERC20 'Approve' function to 
 
 ![ApproveFunction](Images/ApproveFunction.PNG)
 
-Click confirm on MetaMask. 
+Click confirm on MetaMask.
 
 ![MMApprove](Images/MMApprove.PNG)
 
