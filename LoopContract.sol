@@ -54,7 +54,7 @@ contract TimeBank is ERC20, ERC20Detailed {
     function signOff() public payable {  
         require(status == Completed, "Sorry, Not Completed Yet!"); // Checks that the status of the work is completed.
         require(msg.sender == requestor, "Not Authoritzed to Sign Off on this Contract"); // Checks to make sure the requestor and not the provider signs off.
-        transferFrom(requestor, provider, amount); // Transfers funds from requestor to provider.
+        transferFrom(requestor, provider, amount); // Transfers funds from requestor to provider
     }
 
 
