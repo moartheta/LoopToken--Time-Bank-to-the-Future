@@ -1,3 +1,5 @@
+//This was the original LoopToken creation code.  We merged this into LoopContract.sol to put it all under one roof
+
 pragma solidity ^0.5.0;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/token/ERC20/ERC20.sol";
